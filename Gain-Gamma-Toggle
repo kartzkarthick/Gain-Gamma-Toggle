@@ -1,0 +1,51 @@
+import fx
+
+previous_gain = 0
+def toggleviewerGain():
+    global previous_gain
+    if fx.viewer.exposure != 0:
+        previous_gain = fx.viewer.exposure
+        fx.viewer.exposure = 0
+    else:
+        fx.viewer.exposure = previous_gain
+    
+#===============================================================================
+fx.bind("Ctrl+g", toggleviewerGain)
+#===============================================================================
+
+previous_gamma =1
+def toggleviewerGamma():
+    global previous_gamma
+    if fx.viewer.gamma != 1:
+        previous_gamma = fx.viewer.gamma
+        fx.viewer.gamma = 1
+    else:
+        fx.viewer.gamma = previous_gamma
+    
+#===============================================================================
+fx.bind("Ctrl+shift+g", toggleviewerGamma)
+#===============================================================
+
+previous_gain = 0
+previous_gamma = 1
+
+def toggleViewerGainAndGamma():
+    global previous_gain, previous_gamma
+    
+    # Toggle gain
+    if fx.viewer.exposure != 0:
+        previous_gain = fx.viewer.exposure
+        fx.viewer.exposure = 0
+    else:
+        fx.viewer.exposure = previous_gain
+    
+    # Toggle gamma
+    if fx.viewer.gamma != 1:
+        previous_gamma = fx.viewer.gamma
+        fx.viewer.gamma = 1
+    else:
+        fx.viewer.gamma = previous_gamma
+
+#===============================================================================
+fx.bind("Ctrl+Alt+g", toggleViewerGainAndGamma)
+#===============================================================================
